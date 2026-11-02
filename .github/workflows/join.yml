@@ -9,6 +9,7 @@ on:
 permissions:
   contents: write
   issues: write
+  actions: write
 
 concurrency:
   group: join          # one at a time, so two students cannot take the same package
@@ -60,4 +61,5 @@ jobs:
             LABEL=$(python3 -c "import json;print(json.load(open('/tmp/result.json'))['label'])")
             gh label create "$LABEL" --color 0E8A16 2>/dev/null || true
             gh issue edit $N --title "$TITLE" --add-label "$LABEL" --add-label joined --remove-label join
+            gh workflow run board.yml --repo "${{ github.repository }}"   # show the new member on the class board
           fi
