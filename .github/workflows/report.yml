@@ -12,7 +12,7 @@ permissions:
   contents: write
   pull-requests: write
   issues: write
-  actions: read
+  actions: write
 
 jobs:
   report:
@@ -75,4 +75,7 @@ jobs:
         if: steps.pr.outputs.number && steps.gate.outputs.ok == '1' && github.event.workflow_run.conclusion == 'success'
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh pr merge ${{ steps.pr.outputs.number }} --merge
+        run: |
+          gh pr merge ${{ steps.pr.outputs.number }} --merge
+          # a merge made with this token does not trigger board.yml by itself
+          gh workflow run board.yml --repo "${{ github.repository }}"
