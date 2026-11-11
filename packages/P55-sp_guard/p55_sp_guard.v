@@ -27,7 +27,7 @@ module p55_sp_guard (
     // The processor writes x2 (sp) and the instruction really completes
     wire sp_write = commit & rf_we & (rd == 5'd2);
 
-    // Next values. Steps in order: device write first, then the sp watcher.
+    // Next values. LIMIT write counts first; a STATUS write beats the sp watcher.
     reg [31:0] limit_n;
     reg [31:0] minsp_n;
     reg        status_n;
@@ -47,8 +47,9 @@ module p55_sp_guard (
             minsp_n  = 32'hFFFF_FFFF;
         end
 
-        // new sp value: keep the minimum, raise the flag if below LIMIT
-        if (sp_write) begin
+        // new sp value: keep the minimum, raise the flag if below LIMIT.
+        // A STATUS write in the same cycle wins, so the sp value is dropped.
+        else if (sp_write) begin
             if (rf_wd < minsp_n)
                 minsp_n = rf_wd;
             if (rf_wd < limit_n)
