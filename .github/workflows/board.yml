@@ -28,8 +28,14 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - name: Cache Icarus Verilog
+        uses: actions/cache@v4
+        with:
+          path: ~/iverilog-debs
+          key: iverilog-12-noble
+
       - name: Install Icarus Verilog
-        run: sudo apt-get update -qq && sudo apt-get install -y -qq iverilog > /dev/null
+        run: sh tools/ci/install_iverilog.sh
       - name: Cache Digital
         id: digital
         uses: actions/cache@v4
