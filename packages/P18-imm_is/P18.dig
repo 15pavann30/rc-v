@@ -276,6 +276,16 @@ Do not rename, move or delete the input and output pins.</string>
       </elementAttributes>
       <pos x="700" y="160" />
     </visualElement>
+    <visualElement>
+      <elementName>Text</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Description</string>
+          <string>P18 Circuit Update</string>
+        </entry>
+      </elementAttributes>
+      <pos x="100" y="20" />
+    </visualElement>
   </visualElements>
   <wires>
     <wire>
