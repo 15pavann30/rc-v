@@ -504,6 +504,10 @@ Do not rename, move or delete the input and output pins.</string>
       <p1 x="720" y="160" />
       <p2 x="900" y="160" />
     </wire>
+    <wire>
+      <p1 x="-1000" y="-1000" />
+      <p2 x="-980" y="-1000" />
+    </wire>
   </wires>
   <measurementOrdering />
 </circuit>
