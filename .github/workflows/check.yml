@@ -25,7 +25,9 @@ jobs:
 
       # The checker itself always comes from main, never from the pull request.
       - name: Trusted tools from main
-        run: git worktree add -q /tmp/base "${{ github.event.pull_request.base.sha || github.sha }}"
+        run: |
+          git fetch -q origin main
+          git worktree add -q /tmp/base origin/main      # latest checker, even on a re-run
 
       # Written first, so a student always gets a comment even if setup fails.
       - name: Placeholder report

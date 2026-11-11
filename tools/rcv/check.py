@@ -197,7 +197,9 @@ def check_dossier(p, f):
             empty.append(h)
             continue
         extra = set(re.findall(r"\w+", got[h].lower())) - set(re.findall(r"\w+", tsec[h].lower()))
-        if len(extra) < 8 and h != "E4":
+        # E4 is a checklist; E2 (reviews) depends on partners' pull requests, so it is
+        # marked at the end as teamwork and does not block a merge
+        if len(extra) < 8 and h not in ("E2", "E4"):
             empty.append(h)
     if empty:
         return "fail", [f"sections not answered yet: {', '.join(empty)}"]
