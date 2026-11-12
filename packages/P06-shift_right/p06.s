@@ -4,9 +4,10 @@
 
         .text
 p06_main:
-        addi    sp, sp, -8
-        sw      ra, 4(sp)
-        sw      s0, 0(sp)
+        addi    sp, sp, -16
+        sw      ra, 12(sp)
+        sw      s0, 8(sp)
+        sw      s1, 4(sp)
 
         call    rcv_read_dec
         mv      s0, a0
@@ -26,12 +27,12 @@ p06_main:
         # Arithmetic right shift: sign bit is replicated.
         la      a0, p06_label_sra
         call    rcv_puts
-        srai    t0, s0, 1
-        mv      a0, t0
+        srai    s1, s0, 1
+        mv      a0, s1
         call    rcv_print_dec
         la      a0, p06_open_paren
         call    rcv_puts
-        mv      a0, t0
+        mv      a0, s1
         call    rcv_print_hex
         la      a0, p06_close_line
         call    rcv_puts
@@ -39,19 +40,20 @@ p06_main:
         # Logical right shift: zeros are shifted in from the left.
         la      a0, p06_label_srl
         call    rcv_puts
-        srli    t0, s0, 1
-        mv      a0, t0
+        srli    s1, s0, 1
+        mv      a0, s1
         call    rcv_print_dec
         la      a0, p06_open_paren
         call    rcv_puts
-        mv      a0, t0
+        mv      a0, s1
         call    rcv_print_hex
         la      a0, p06_close_line
         call    rcv_puts
 
-        lw      s0, 0(sp)
-        lw      ra, 4(sp)
-        addi    sp, sp, 8
+        lw      s1, 4(sp)
+        lw      s0, 8(sp)
+        lw      ra, 12(sp)
+        addi    sp, sp, 16
         ret
 
         .rodata
