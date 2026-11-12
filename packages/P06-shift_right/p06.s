@@ -1,20 +1,67 @@
-# P06 program - see README.md for the task.
-# Rules: start at the label p06_main and finish with ret; every label you
-# create starts with p06_ ; save ra (and any s registers you use) on the stack.
-# You may call the library routines in sw/lib/rcv_lib.s (rcv_puts, rcv_getc, ...).
+# P06 program - arithmetic and logical right shift
+# Reads a signed decimal N and prints N, N sra 1, and N srl 1.
+# Each result is printed as signed decimal followed by 8-digit hex.
 
         .text
 p06_main:
-        addi    sp, sp, -4
-        sw      ra, 0(sp)
+        addi    sp, sp, -8
+        sw      ra, 4(sp)
+        sw      s0, 0(sp)
 
-        # TODO: your program
+        call    rcv_read_dec
+        mv      s0, a0
 
-        lw      ra, 0(sp)
-        addi    sp, sp, 4
+        # Print the original value.
+        la      a0, p06_label_n
+        call    rcv_puts
+        mv      a0, s0
+        call    rcv_print_dec
+        la      a0, p06_open_paren
+        call    rcv_puts
+        mv      a0, s0
+        call    rcv_print_hex
+        la      a0, p06_close_line
+        call    rcv_puts
+
+        # Arithmetic right shift: sign bit is replicated.
+        la      a0, p06_label_sra
+        call    rcv_puts
+        srai    t0, s0, 1
+        mv      a0, t0
+        call    rcv_print_dec
+        la      a0, p06_open_paren
+        call    rcv_puts
+        mv      a0, t0
+        call    rcv_print_hex
+        la      a0, p06_close_line
+        call    rcv_puts
+
+        # Logical right shift: zeros are shifted in from the left.
+        la      a0, p06_label_srl
+        call    rcv_puts
+        srli    t0, s0, 1
+        mv      a0, t0
+        call    rcv_print_dec
+        la      a0, p06_open_paren
+        call    rcv_puts
+        mv      a0, t0
+        call    rcv_print_hex
+        la      a0, p06_close_line
+        call    rcv_puts
+
+        lw      s0, 0(sp)
+        lw      ra, 4(sp)
+        addi    sp, sp, 8
         ret
 
         .rodata
-p06_msg:
-        .asciz  "TODO\n"
-        .align  2
+p06_label_n:
+        .asciz  "N       = "
+p06_label_sra:
+        .asciz  "N sra 1 = "
+p06_label_srl:
+        .asciz  "N srl 1 = "
+p06_open_paren:
+        .asciz  " ("
+p06_close_line:
+        .asciz  ")\n"
