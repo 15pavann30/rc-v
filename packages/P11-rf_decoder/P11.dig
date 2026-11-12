@@ -4,78 +4,252 @@
   <attributes/>
   <visualElements>
     <visualElement><elementName>In</elementName><elementAttributes><entry><string>Label</string><string>we</string></entry><entry><string>Bits</string><int>1</int></entry></elementAttributes><pos x="100" y="100"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>we</string></entry></elementAttributes><pos x="100" y="100"/></visualElement>
     <visualElement><elementName>In</elementName><elementAttributes><entry><string>Label</string><string>rd</string></entry><entry><string>Bits</string><int>5</int></entry></elementAttributes><pos x="100" y="160"/></visualElement>
+    <visualElement><elementName>Splitter</elementName><elementAttributes><entry><string>Input Splitting</string><string>5</string></entry><entry><string>Output Splitting</string><string>3,2</string></entry></elementAttributes><pos x="120" y="160"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>rd_lo</string></entry></elementAttributes><pos x="140" y="160"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>rd_hi</string></entry></elementAttributes><pos x="140" y="180"/></visualElement>
+    <visualElement><elementName>Decoder</elementName><elementAttributes><entry><string>Selector Bits</string><int>2</int></entry></elementAttributes><pos x="220" y="100"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>rd_hi</string></entry></elementAttributes><pos x="220" y="180"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>g0</string></entry></elementAttributes><pos x="260" y="100"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>g1</string></entry></elementAttributes><pos x="260" y="120"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>g2</string></entry></elementAttributes><pos x="260" y="140"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>g3</string></entry></elementAttributes><pos x="260" y="160"/></visualElement>
+    <visualElement><elementName>Decoder</elementName><elementAttributes><entry><string>Selector Bits</string><int>3</int></entry></elementAttributes><pos x="220" y="300"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>rd_lo</string></entry></elementAttributes><pos x="220" y="460"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_0_0</string></entry></elementAttributes><pos x="260" y="300"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_0_1</string></entry></elementAttributes><pos x="260" y="320"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_0_2</string></entry></elementAttributes><pos x="260" y="340"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_0_3</string></entry></elementAttributes><pos x="260" y="360"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_0_4</string></entry></elementAttributes><pos x="260" y="380"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_0_5</string></entry></elementAttributes><pos x="260" y="400"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_0_6</string></entry></elementAttributes><pos x="260" y="420"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_0_7</string></entry></elementAttributes><pos x="260" y="440"/></visualElement>
+    <visualElement><elementName>Decoder</elementName><elementAttributes><entry><string>Selector Bits</string><int>3</int></entry></elementAttributes><pos x="220" y="520"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>rd_lo</string></entry></elementAttributes><pos x="220" y="680"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_1_0</string></entry></elementAttributes><pos x="260" y="520"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_1_1</string></entry></elementAttributes><pos x="260" y="540"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_1_2</string></entry></elementAttributes><pos x="260" y="560"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_1_3</string></entry></elementAttributes><pos x="260" y="580"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_1_4</string></entry></elementAttributes><pos x="260" y="600"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_1_5</string></entry></elementAttributes><pos x="260" y="620"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_1_6</string></entry></elementAttributes><pos x="260" y="640"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_1_7</string></entry></elementAttributes><pos x="260" y="660"/></visualElement>
+    <visualElement><elementName>Decoder</elementName><elementAttributes><entry><string>Selector Bits</string><int>3</int></entry></elementAttributes><pos x="220" y="740"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>rd_lo</string></entry></elementAttributes><pos x="220" y="900"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_2_0</string></entry></elementAttributes><pos x="260" y="740"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_2_1</string></entry></elementAttributes><pos x="260" y="760"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_2_2</string></entry></elementAttributes><pos x="260" y="780"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_2_3</string></entry></elementAttributes><pos x="260" y="800"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_2_4</string></entry></elementAttributes><pos x="260" y="820"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_2_5</string></entry></elementAttributes><pos x="260" y="840"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_2_6</string></entry></elementAttributes><pos x="260" y="860"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_2_7</string></entry></elementAttributes><pos x="260" y="880"/></visualElement>
+    <visualElement><elementName>Decoder</elementName><elementAttributes><entry><string>Selector Bits</string><int>3</int></entry></elementAttributes><pos x="220" y="960"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>rd_lo</string></entry></elementAttributes><pos x="220" y="1120"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_3_0</string></entry></elementAttributes><pos x="260" y="960"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_3_1</string></entry></elementAttributes><pos x="260" y="980"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_3_2</string></entry></elementAttributes><pos x="260" y="1000"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_3_3</string></entry></elementAttributes><pos x="260" y="1020"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_3_4</string></entry></elementAttributes><pos x="260" y="1040"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_3_5</string></entry></elementAttributes><pos x="260" y="1060"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_3_6</string></entry></elementAttributes><pos x="260" y="1080"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_3_7</string></entry></elementAttributes><pos x="260" y="1100"/></visualElement>
+    <visualElement><elementName>Const</elementName><elementAttributes><entry><string>Value</string><long>0</long></entry><entry><string>Bits</string><int>1</int></entry></elementAttributes><pos x="560" y="100"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w0</string></entry></elementAttributes><pos x="560" y="100"/></visualElement>
+    <visualElement><elementName>And</elementName><elementAttributes><entry><string>Inputs</string><int>3</int></entry><entry><string>wideShape</string><boolean>true</boolean></entry></elementAttributes><pos x="460" y="180"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>we</string></entry></elementAttributes><pos x="460" y="180"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>g0</string></entry></elementAttributes><pos x="460" y="200"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_0_1</string></entry></elementAttributes><pos x="460" y="220"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w1</string></entry></elementAttributes><pos x="540" y="200"/></visualElement>
+    <visualElement><elementName>And</elementName><elementAttributes><entry><string>Inputs</string><int>3</int></entry><entry><string>wideShape</string><boolean>true</boolean></entry></elementAttributes><pos x="460" y="260"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>we</string></entry></elementAttributes><pos x="460" y="260"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>g0</string></entry></elementAttributes><pos x="460" y="280"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_0_2</string></entry></elementAttributes><pos x="460" y="300"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w2</string></entry></elementAttributes><pos x="540" y="280"/></visualElement>
+    <visualElement><elementName>And</elementName><elementAttributes><entry><string>Inputs</string><int>3</int></entry><entry><string>wideShape</string><boolean>true</boolean></entry></elementAttributes><pos x="460" y="340"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>we</string></entry></elementAttributes><pos x="460" y="340"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>g0</string></entry></elementAttributes><pos x="460" y="360"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_0_3</string></entry></elementAttributes><pos x="460" y="380"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w3</string></entry></elementAttributes><pos x="540" y="360"/></visualElement>
+    <visualElement><elementName>And</elementName><elementAttributes><entry><string>Inputs</string><int>3</int></entry><entry><string>wideShape</string><boolean>true</boolean></entry></elementAttributes><pos x="460" y="420"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>we</string></entry></elementAttributes><pos x="460" y="420"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>g0</string></entry></elementAttributes><pos x="460" y="440"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_0_4</string></entry></elementAttributes><pos x="460" y="460"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w4</string></entry></elementAttributes><pos x="540" y="440"/></visualElement>
+    <visualElement><elementName>And</elementName><elementAttributes><entry><string>Inputs</string><int>3</int></entry><entry><string>wideShape</string><boolean>true</boolean></entry></elementAttributes><pos x="460" y="500"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>we</string></entry></elementAttributes><pos x="460" y="500"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>g0</string></entry></elementAttributes><pos x="460" y="520"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_0_5</string></entry></elementAttributes><pos x="460" y="540"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w5</string></entry></elementAttributes><pos x="540" y="520"/></visualElement>
+    <visualElement><elementName>And</elementName><elementAttributes><entry><string>Inputs</string><int>3</int></entry><entry><string>wideShape</string><boolean>true</boolean></entry></elementAttributes><pos x="460" y="580"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>we</string></entry></elementAttributes><pos x="460" y="580"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>g0</string></entry></elementAttributes><pos x="460" y="600"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_0_6</string></entry></elementAttributes><pos x="460" y="620"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w6</string></entry></elementAttributes><pos x="540" y="600"/></visualElement>
+    <visualElement><elementName>And</elementName><elementAttributes><entry><string>Inputs</string><int>3</int></entry><entry><string>wideShape</string><boolean>true</boolean></entry></elementAttributes><pos x="460" y="660"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>we</string></entry></elementAttributes><pos x="460" y="660"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>g0</string></entry></elementAttributes><pos x="460" y="680"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_0_7</string></entry></elementAttributes><pos x="460" y="700"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w7</string></entry></elementAttributes><pos x="540" y="680"/></visualElement>
+    <visualElement><elementName>And</elementName><elementAttributes><entry><string>Inputs</string><int>3</int></entry><entry><string>wideShape</string><boolean>true</boolean></entry></elementAttributes><pos x="460" y="740"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>we</string></entry></elementAttributes><pos x="460" y="740"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>g1</string></entry></elementAttributes><pos x="460" y="760"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_1_0</string></entry></elementAttributes><pos x="460" y="780"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w8</string></entry></elementAttributes><pos x="540" y="760"/></visualElement>
+    <visualElement><elementName>And</elementName><elementAttributes><entry><string>Inputs</string><int>3</int></entry><entry><string>wideShape</string><boolean>true</boolean></entry></elementAttributes><pos x="460" y="820"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>we</string></entry></elementAttributes><pos x="460" y="820"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>g1</string></entry></elementAttributes><pos x="460" y="840"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_1_1</string></entry></elementAttributes><pos x="460" y="860"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w9</string></entry></elementAttributes><pos x="540" y="840"/></visualElement>
+    <visualElement><elementName>And</elementName><elementAttributes><entry><string>Inputs</string><int>3</int></entry><entry><string>wideShape</string><boolean>true</boolean></entry></elementAttributes><pos x="460" y="900"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>we</string></entry></elementAttributes><pos x="460" y="900"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>g1</string></entry></elementAttributes><pos x="460" y="920"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_1_2</string></entry></elementAttributes><pos x="460" y="940"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w10</string></entry></elementAttributes><pos x="540" y="920"/></visualElement>
+    <visualElement><elementName>And</elementName><elementAttributes><entry><string>Inputs</string><int>3</int></entry><entry><string>wideShape</string><boolean>true</boolean></entry></elementAttributes><pos x="460" y="980"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>we</string></entry></elementAttributes><pos x="460" y="980"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>g1</string></entry></elementAttributes><pos x="460" y="1000"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_1_3</string></entry></elementAttributes><pos x="460" y="1020"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w11</string></entry></elementAttributes><pos x="540" y="1000"/></visualElement>
+    <visualElement><elementName>And</elementName><elementAttributes><entry><string>Inputs</string><int>3</int></entry><entry><string>wideShape</string><boolean>true</boolean></entry></elementAttributes><pos x="460" y="1060"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>we</string></entry></elementAttributes><pos x="460" y="1060"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>g1</string></entry></elementAttributes><pos x="460" y="1080"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_1_4</string></entry></elementAttributes><pos x="460" y="1100"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w12</string></entry></elementAttributes><pos x="540" y="1080"/></visualElement>
+    <visualElement><elementName>And</elementName><elementAttributes><entry><string>Inputs</string><int>3</int></entry><entry><string>wideShape</string><boolean>true</boolean></entry></elementAttributes><pos x="460" y="1140"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>we</string></entry></elementAttributes><pos x="460" y="1140"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>g1</string></entry></elementAttributes><pos x="460" y="1160"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_1_5</string></entry></elementAttributes><pos x="460" y="1180"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w13</string></entry></elementAttributes><pos x="540" y="1160"/></visualElement>
+    <visualElement><elementName>And</elementName><elementAttributes><entry><string>Inputs</string><int>3</int></entry><entry><string>wideShape</string><boolean>true</boolean></entry></elementAttributes><pos x="460" y="1220"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>we</string></entry></elementAttributes><pos x="460" y="1220"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>g1</string></entry></elementAttributes><pos x="460" y="1240"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_1_6</string></entry></elementAttributes><pos x="460" y="1260"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w14</string></entry></elementAttributes><pos x="540" y="1240"/></visualElement>
+    <visualElement><elementName>And</elementName><elementAttributes><entry><string>Inputs</string><int>3</int></entry><entry><string>wideShape</string><boolean>true</boolean></entry></elementAttributes><pos x="460" y="1300"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>we</string></entry></elementAttributes><pos x="460" y="1300"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>g1</string></entry></elementAttributes><pos x="460" y="1320"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_1_7</string></entry></elementAttributes><pos x="460" y="1340"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w15</string></entry></elementAttributes><pos x="540" y="1320"/></visualElement>
+    <visualElement><elementName>And</elementName><elementAttributes><entry><string>Inputs</string><int>3</int></entry><entry><string>wideShape</string><boolean>true</boolean></entry></elementAttributes><pos x="460" y="1380"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>we</string></entry></elementAttributes><pos x="460" y="1380"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>g2</string></entry></elementAttributes><pos x="460" y="1400"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_2_0</string></entry></elementAttributes><pos x="460" y="1420"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w16</string></entry></elementAttributes><pos x="540" y="1400"/></visualElement>
+    <visualElement><elementName>And</elementName><elementAttributes><entry><string>Inputs</string><int>3</int></entry><entry><string>wideShape</string><boolean>true</boolean></entry></elementAttributes><pos x="460" y="1460"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>we</string></entry></elementAttributes><pos x="460" y="1460"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>g2</string></entry></elementAttributes><pos x="460" y="1480"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_2_1</string></entry></elementAttributes><pos x="460" y="1500"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w17</string></entry></elementAttributes><pos x="540" y="1480"/></visualElement>
+    <visualElement><elementName>And</elementName><elementAttributes><entry><string>Inputs</string><int>3</int></entry><entry><string>wideShape</string><boolean>true</boolean></entry></elementAttributes><pos x="460" y="1540"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>we</string></entry></elementAttributes><pos x="460" y="1540"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>g2</string></entry></elementAttributes><pos x="460" y="1560"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_2_2</string></entry></elementAttributes><pos x="460" y="1580"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w18</string></entry></elementAttributes><pos x="540" y="1560"/></visualElement>
+    <visualElement><elementName>And</elementName><elementAttributes><entry><string>Inputs</string><int>3</int></entry><entry><string>wideShape</string><boolean>true</boolean></entry></elementAttributes><pos x="460" y="1620"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>we</string></entry></elementAttributes><pos x="460" y="1620"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>g2</string></entry></elementAttributes><pos x="460" y="1640"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_2_3</string></entry></elementAttributes><pos x="460" y="1660"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w19</string></entry></elementAttributes><pos x="540" y="1640"/></visualElement>
+    <visualElement><elementName>And</elementName><elementAttributes><entry><string>Inputs</string><int>3</int></entry><entry><string>wideShape</string><boolean>true</boolean></entry></elementAttributes><pos x="460" y="1700"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>we</string></entry></elementAttributes><pos x="460" y="1700"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>g2</string></entry></elementAttributes><pos x="460" y="1720"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_2_4</string></entry></elementAttributes><pos x="460" y="1740"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w20</string></entry></elementAttributes><pos x="540" y="1720"/></visualElement>
+    <visualElement><elementName>And</elementName><elementAttributes><entry><string>Inputs</string><int>3</int></entry><entry><string>wideShape</string><boolean>true</boolean></entry></elementAttributes><pos x="460" y="1780"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>we</string></entry></elementAttributes><pos x="460" y="1780"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>g2</string></entry></elementAttributes><pos x="460" y="1800"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_2_5</string></entry></elementAttributes><pos x="460" y="1820"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w21</string></entry></elementAttributes><pos x="540" y="1800"/></visualElement>
+    <visualElement><elementName>And</elementName><elementAttributes><entry><string>Inputs</string><int>3</int></entry><entry><string>wideShape</string><boolean>true</boolean></entry></elementAttributes><pos x="460" y="1860"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>we</string></entry></elementAttributes><pos x="460" y="1860"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>g2</string></entry></elementAttributes><pos x="460" y="1880"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_2_6</string></entry></elementAttributes><pos x="460" y="1900"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w22</string></entry></elementAttributes><pos x="540" y="1880"/></visualElement>
+    <visualElement><elementName>And</elementName><elementAttributes><entry><string>Inputs</string><int>3</int></entry><entry><string>wideShape</string><boolean>true</boolean></entry></elementAttributes><pos x="460" y="1940"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>we</string></entry></elementAttributes><pos x="460" y="1940"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>g2</string></entry></elementAttributes><pos x="460" y="1960"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_2_7</string></entry></elementAttributes><pos x="460" y="1980"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w23</string></entry></elementAttributes><pos x="540" y="1960"/></visualElement>
+    <visualElement><elementName>And</elementName><elementAttributes><entry><string>Inputs</string><int>3</int></entry><entry><string>wideShape</string><boolean>true</boolean></entry></elementAttributes><pos x="460" y="2020"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>we</string></entry></elementAttributes><pos x="460" y="2020"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>g3</string></entry></elementAttributes><pos x="460" y="2040"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_3_0</string></entry></elementAttributes><pos x="460" y="2060"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w24</string></entry></elementAttributes><pos x="540" y="2040"/></visualElement>
+    <visualElement><elementName>And</elementName><elementAttributes><entry><string>Inputs</string><int>3</int></entry><entry><string>wideShape</string><boolean>true</boolean></entry></elementAttributes><pos x="460" y="2100"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>we</string></entry></elementAttributes><pos x="460" y="2100"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>g3</string></entry></elementAttributes><pos x="460" y="2120"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_3_1</string></entry></elementAttributes><pos x="460" y="2140"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w25</string></entry></elementAttributes><pos x="540" y="2120"/></visualElement>
+    <visualElement><elementName>And</elementName><elementAttributes><entry><string>Inputs</string><int>3</int></entry><entry><string>wideShape</string><boolean>true</boolean></entry></elementAttributes><pos x="460" y="2180"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>we</string></entry></elementAttributes><pos x="460" y="2180"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>g3</string></entry></elementAttributes><pos x="460" y="2200"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_3_2</string></entry></elementAttributes><pos x="460" y="2220"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w26</string></entry></elementAttributes><pos x="540" y="2200"/></visualElement>
+    <visualElement><elementName>And</elementName><elementAttributes><entry><string>Inputs</string><int>3</int></entry><entry><string>wideShape</string><boolean>true</boolean></entry></elementAttributes><pos x="460" y="2260"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>we</string></entry></elementAttributes><pos x="460" y="2260"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>g3</string></entry></elementAttributes><pos x="460" y="2280"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_3_3</string></entry></elementAttributes><pos x="460" y="2300"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w27</string></entry></elementAttributes><pos x="540" y="2280"/></visualElement>
+    <visualElement><elementName>And</elementName><elementAttributes><entry><string>Inputs</string><int>3</int></entry><entry><string>wideShape</string><boolean>true</boolean></entry></elementAttributes><pos x="460" y="2340"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>we</string></entry></elementAttributes><pos x="460" y="2340"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>g3</string></entry></elementAttributes><pos x="460" y="2360"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_3_4</string></entry></elementAttributes><pos x="460" y="2380"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w28</string></entry></elementAttributes><pos x="540" y="2360"/></visualElement>
+    <visualElement><elementName>And</elementName><elementAttributes><entry><string>Inputs</string><int>3</int></entry><entry><string>wideShape</string><boolean>true</boolean></entry></elementAttributes><pos x="460" y="2420"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>we</string></entry></elementAttributes><pos x="460" y="2420"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>g3</string></entry></elementAttributes><pos x="460" y="2440"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_3_5</string></entry></elementAttributes><pos x="460" y="2460"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w29</string></entry></elementAttributes><pos x="540" y="2440"/></visualElement>
+    <visualElement><elementName>And</elementName><elementAttributes><entry><string>Inputs</string><int>3</int></entry><entry><string>wideShape</string><boolean>true</boolean></entry></elementAttributes><pos x="460" y="2500"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>we</string></entry></elementAttributes><pos x="460" y="2500"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>g3</string></entry></elementAttributes><pos x="460" y="2520"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_3_6</string></entry></elementAttributes><pos x="460" y="2540"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w30</string></entry></elementAttributes><pos x="540" y="2520"/></visualElement>
+    <visualElement><elementName>And</elementName><elementAttributes><entry><string>Inputs</string><int>3</int></entry><entry><string>wideShape</string><boolean>true</boolean></entry></elementAttributes><pos x="460" y="2580"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>we</string></entry></elementAttributes><pos x="460" y="2580"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>g3</string></entry></elementAttributes><pos x="460" y="2600"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>d_3_7</string></entry></elementAttributes><pos x="460" y="2620"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w31</string></entry></elementAttributes><pos x="540" y="2600"/></visualElement>
+    <visualElement><elementName>Splitter</elementName><elementAttributes><entry><string>Input Splitting</string><string>1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1</string></entry><entry><string>Output Splitting</string><string>32</string></entry></elementAttributes><pos x="860" y="100"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w0</string></entry></elementAttributes><pos x="860" y="100"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w1</string></entry></elementAttributes><pos x="860" y="120"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w2</string></entry></elementAttributes><pos x="860" y="140"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w3</string></entry></elementAttributes><pos x="860" y="160"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w4</string></entry></elementAttributes><pos x="860" y="180"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w5</string></entry></elementAttributes><pos x="860" y="200"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w6</string></entry></elementAttributes><pos x="860" y="220"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w7</string></entry></elementAttributes><pos x="860" y="240"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w8</string></entry></elementAttributes><pos x="860" y="260"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w9</string></entry></elementAttributes><pos x="860" y="280"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w10</string></entry></elementAttributes><pos x="860" y="300"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w11</string></entry></elementAttributes><pos x="860" y="320"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w12</string></entry></elementAttributes><pos x="860" y="340"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w13</string></entry></elementAttributes><pos x="860" y="360"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w14</string></entry></elementAttributes><pos x="860" y="380"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w15</string></entry></elementAttributes><pos x="860" y="400"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w16</string></entry></elementAttributes><pos x="860" y="420"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w17</string></entry></elementAttributes><pos x="860" y="440"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w18</string></entry></elementAttributes><pos x="860" y="460"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w19</string></entry></elementAttributes><pos x="860" y="480"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w20</string></entry></elementAttributes><pos x="860" y="500"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w21</string></entry></elementAttributes><pos x="860" y="520"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w22</string></entry></elementAttributes><pos x="860" y="540"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w23</string></entry></elementAttributes><pos x="860" y="560"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w24</string></entry></elementAttributes><pos x="860" y="580"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w25</string></entry></elementAttributes><pos x="860" y="600"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w26</string></entry></elementAttributes><pos x="860" y="620"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w27</string></entry></elementAttributes><pos x="860" y="640"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w28</string></entry></elementAttributes><pos x="860" y="660"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w29</string></entry></elementAttributes><pos x="860" y="680"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w30</string></entry></elementAttributes><pos x="860" y="700"/></visualElement>
+    <visualElement><elementName>Tunnel</elementName><elementAttributes><entry><string>NetName</string><string>w31</string></entry></elementAttributes><pos x="860" y="720"/></visualElement>
     <visualElement><elementName>Out</elementName><elementAttributes><entry><string>Label</string><string>wen</string></entry><entry><string>Bits</string><int>32</int></entry></elementAttributes><pos x="900" y="100"/></visualElement>
-    <visualElement><elementName>Text</elementName><elementAttributes><entry><string>Description</string><string>P11 Register-file write decoder - Digital task
-Full size: build the 5-to-32 decoder from one 2-to-4 and four 3-to-8 Decoder parts plus AND gates.
-Allowed parts: gates + Multiplexer, Demultiplexer, Decoder, PriorityEncoder
-Do not rename, move or delete the input and output pins.</string></entry></elementAttributes><pos x="100" y="40"/></visualElement>
-    <visualElement><elementName>Testcase</elementName><elementAttributes><entry><string>Label</string><string>public tests</string></entry><entry><string>Testdata</string><testData><dataString>we rd wen
-0 0 0
-0 1 0
-0 2 0
-0 3 0
-0 4 0
-0 5 0
-0 6 0
-0 7 0
-0 8 0
-0 9 0
-0 10 0
-0 11 0
-0 12 0
-0 13 0
-0 14 0
-0 15 0
-0 16 0
-0 17 0
-0 18 0
-0 19 0
-0 20 0
-0 21 0
-0 22 0
-0 23 0
-0 24 0
-0 25 0
-0 26 0
-0 27 0
-0 28 0
-0 29 0
-0 30 0
-0 31 0
-1 0 0
-1 1 2
-1 2 4
-1 3 8
-1 4 16
-1 5 32
-1 6 64
-1 7 128
-1 8 256
-1 9 512
-1 10 1024
-1 11 2048
-1 12 4096
-1 13 8192
-1 14 16384
-1 15 32768
-1 16 65536
-1 17 131072
-1 18 262144
-1 19 524288
-1 20 1048576
-1 21 2097152
-1 22 4194304
-1 23 8388608
-1 24 16777216
-1 25 33554432
-1 26 67108864
-1 27 134217728
-1 28 268435456
-1 29 536870912
-1 30 1073741824
-1 31 2147483648</dataString></testData></entry></elementAttributes><pos x="100" y="260"/></visualElement>
   </visualElements>
-  <wires/>
+  <wires>
+    <wire><p1 x="100" y="160"/><p2 x="120" y="160"/></wire>
+    <wire><p1 x="880" y="100"/><p2 x="900" y="100"/></wire>
+  </wires>
   <measurementOrdering/>
 </circuit>
