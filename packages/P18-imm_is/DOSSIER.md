@@ -73,14 +73,15 @@ write-back, interrupt) does your block do its work? Which instructions need it?
 
 P18 works in the **Decode** step of the single-cycle instruction cycle, in parallel with `P17` (field splitter), `P21`–`P24` (control decode), and `P13` (register file read).
 
-- **Instructions using `imm_i`:** `ADDI`, `SLTI`, `SLTIU`, `XORI`, `ORI`, `ANDI`, `SLLI`, `SRLI`, `SRAI`, loads (`LB`, `LH`, `LW`, `LBU`, `LHU`), `JALR`, and CSR instructions (`CSRRW`, `CSRRS`, `CSRRC`).
+- **Instructions using `imm_i`:** `ADDI`, `SLTI`, `SLTIU`, `XORI`, `ORI`, `ANDI`, `SLLI`, `SRLI`, `SRAI`, loads (`LB`, `LH`, `LW`, `LBU`, `LHU`), and `JALR`.
+  *(Note on CSR instructions: In `CSRRW`, `CSRRS`, and `CSRRC`, the 12-bit CSR address occupies instruction bits `[31:20]`, which physically matches the I-type immediate position. However, in the RC-V datapath (`shared/rtl/rcv_soc.v`), the CSR address is extracted as an unsigned 12-bit field directly by `P17` (`csr[11:0]`) and fed to `P37` (`u_csr`), rather than utilizing the sign-extended 32-bit `imm_i` output from `P18`.)*
 - **Instructions using `imm_s`:** stores (`SB`, `SH`, `SW`).
 
 ## U5 Processors
 How would a CISC processor, a stack machine or a GPU do the job of your
 block differently? (Look at the RISC-V vs Mano comparison in docs/ARCHITECTURE.md.)
 
-- **RISC-V vs Mano's Basic Computer:** Mano's 16-bit computer has only one fixed 12-bit memory-address field (`IR[11:0]`) and no general immediate ALU operands. RISC-V uses 32-bit fixed-width instructions and places the sign bit at `instr[31]` across all formats so P18/P19 can sign-extend in parallel with opcode decoding.
+- **RISC-V vs Mano's Basic Computer:** Mano's 16-bit computer has only one fixed 12-bit memory-address field (`IR[11:0]`) and no general immediate ALU operands. RISC-V (in its base RV32I specification, as implemented in RC-V) uses fixed 32-bit instructions aligned to 4-byte boundaries and places the sign bit at `instr[31]` across all formats so P18/P19 can sign-extend in parallel with opcode decoding. (While standard RISC-V supports the optional compressed "C" extension with 16-bit instructions, RC-V exclusively uses uncompressed RV32I).
 - **CISC (e.g., x86):** Variable-length instructions (1–15 bytes) place 8/16/32/64-bit immediates at opcode-dependent byte offsets, requiring sequential length decoding and byte-steering logic rather than fixed bit slices.
 - **Stack machine:** Immediates are pushed onto the stack by separate push instructions (`BIPUSH`, `SIPUSH`), while ALU instructions operate implicitly on the top of the stack.
 - **GPU (SIMT):** Scalar/uniform constants are often stored in constant memory or broadcast from a shared scalar unit across all threads in a warp to save instruction bandwidth.
