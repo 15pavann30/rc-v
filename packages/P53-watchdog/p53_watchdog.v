@@ -4,6 +4,8 @@
 // Counts down while enabled. At 0 it sets the sticky bite flag and reloads from LOAD.
 // A write to KICK reloads the counter (and wins over a bite on the same cycle).
 // A write to STATUS clears the bite flag. rst clears everything.
+// Everything, including rdata, changes only on the rising edge of clk:
+// a read in one cycle shows up on rdata after that clock edge.
 module p53_watchdog (
     input  wire clk,
     input  wire rst,
@@ -27,6 +29,7 @@ module p53_watchdog (
             count <= 32'd0;
             en    <= 1'b0;
             bite  <= 1'b0;
+            rdata <= 32'd0;
         end else begin
             // counting
             if (kick)
@@ -47,21 +50,18 @@ module p53_watchdog (
                     default: ;
                 endcase
             end
-        end
-    end
-
-    // reads
-    always @(*) begin
-        rdata = 32'd0;
-        if (sel && re) begin
-            case (ridx)
-                4'd0:  rdata = load;
-                4'd1:  rdata = {31'd0, en};
-                4'd2:  rdata = {31'd0, bite};
-                4'd3:  rdata = count;
-                4'd15: rdata = 32'd53;
-                default: rdata = 32'd0;
-            endcase
+            // register reads (captured on the clock edge)
+            rdata <= 32'd0;
+            if (sel && re) begin
+                case (ridx)
+                    4'd0:  rdata <= load;
+                    4'd1:  rdata <= {31'd0, en};
+                    4'd2:  rdata <= {31'd0, bite};
+                    4'd3:  rdata <= count;
+                    4'd15: rdata <= 32'd53;
+                    default: rdata <= 32'd0;
+                endcase
+            end
         end
     end
 
