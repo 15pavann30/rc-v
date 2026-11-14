@@ -88,6 +88,9 @@ Result: the processor jumps to 0x200 and the return address 0x104 is saved in ra
 Review the pull requests of P03 (PC incrementer) and P05 (Left barrel shifter). Paste the links to your review
 comments here.
 
+- P05 (Left barrel shifter), PR #91: https://github.com/campus-sutra/rc-v/pull/91#issuecomment-6875499496
+- P03 (PC incrementer): (link to be added)
+
 ## E3 Where my block sits
 In two or three sentences: which layer of the computer is your block in
 (gates / components / datapath / control / instruction set / memory / I/O),
