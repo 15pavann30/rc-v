@@ -67,6 +67,23 @@ Trace one **JALR** instruction through the whole RC-V processor,
 block by block (use docs/ARCHITECTURE.md and the simulator's --trace output).
 List the blocks it passes through and the value on the main signals.
 
+Example: jalr ra, 0(t0) at PC = 0x00000100, with t0 (x5) = 0x00000200. Instruction word = 0x000280E7.
+(Illustrative values chosen by hand from the control word in docs/ARCHITECTURE.md; not taken from a simulator --trace run.)
+
+| Step | Block | What happens | Signal values |
+|---|---|---|---|
+| Fetch | P14 PC, P30 ROM | ROM[PC] gives the instruction | PC = 0x100, instruction = 0x000280E7 |
+| Decode | P17 field splitter, P21 class decoder | splits the fields, finds the class | opcode = 1100111, class = JALR, rd = x1, rs1 = x5 |
+| Decode | P22 / P23 control word, P24 select | gives the control word | control word = 0x5102 (is_jalr = 1, regwrite = 1, bsel_imm = 1, wbsel = 2) |
+| Decode | P18 immediate generator I/S, P20 immediate selector | builds the I-type immediate | imm = 0 |
+| Decode | P13 register-file read port | reads rs1 | rs1 value = 0x200 |
+| Execute | P26 operand selector, P10 ALU control, P01 adder | adds rs1 + imm | A = 0x200, B = 0, result = 0x200 |
+| Next PC | P03 PC incrementer, P16 next-PC logic, P15 next-PC selector | computes PC+4 and picks the jump target | PC+4 = 0x104, next PC = 0x200 (bit 0 cleared) |
+| Memory | none | JALR does not use memory | memread = 0, memwrite = 0 |
+| Write back | P25 write-back selector, P11 write decoder, P12 register file | writes PC+4 into rd | wbsel = 2, x1 (ra) = 0x104 |
+
+Result: the processor jumps to 0x200 and the return address 0x104 is saved in ra.
+
 ## E2 Neighbour review
 Review the pull requests of P03 (PC incrementer) and P05 (Left barrel shifter). Paste the links to your review
 comments here.
