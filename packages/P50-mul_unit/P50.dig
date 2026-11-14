@@ -1,73 +1,82 @@
-{
-  "circuit": {
-    "devices": [
-      {
-        "type": "Digital.Component.Pin",
-        "id": "pin_clk",
-        "pos": { "x": 100, "y": 100 },
-        "label": "clk"
-      },
-      {
-        "type": "Digital.Component.Pin",
-        "id": "pin_rst",
-        "pos": { "x": 100, "y": 140 },
-        "label": "rst"
-      },
-      {
-        "type": "Digital.Component.Pin",
-        "id": "pin_sel",
-        "pos": { "x": 100, "y": 180 },
-        "label": "sel"
-      },
-      {
-        "type": "Digital.Component.Pin",
-        "id": "pin_we",
-        "pos": { "x": 100, "y": 220 },
-        "label": "we"
-      },
-      {
-        "type": "Digital.Component.Pin",
-        "id": "pin_re",
-        "pos": { "x": 100, "y": 260 },
-        "label": "re"
-      },
-      {
-        "type": "Digital.Component.Pin",
-        "id": "pin_ridx",
-        "bits": 4,
-        "pos": { "x": 100, "y": 300 },
-        "label": "ridx"
-      },
-      {
-        "type": "Digital.Component.Pin",
-        "id": "pin_wdata",
-        "bits": 32,
-        "pos": { "x": 100, "y": 340 },
-        "label": "wdata"
-      },
-      {
-        "type": "Digital.Component.Pin",
-        "id": "pin_rdata",
-        "bits": 32,
-        "pos": { "x": 500, "y": 180 },
-        "label": "rdata"
-      },
-      {
-        "type": "Digital.Component.Constant",
-        "id": "const_id",
-        "bits": 32,
-        "value": 50,
-        "pos": { "x": 350, "y": 180 }
-      }
-    ],
-    "wires": [
-      {
-        "points": [
-          { "x": 370, "y": 180 },
-          { "x": 500, "y": 180 }
-        ]
-      }
-    ]
-  },
-  "library": []
-}
+<?xml version="1.0" encoding="utf-8"?>
+<project name="P50" version="2">
+  <circuit>
+    <visualElements>
+      <visualElement>
+        <elementName>In</elementName>
+        <pos x="180" y="140"/>
+        <labels>
+          <label>clk</label>
+        </labels>
+      </visualElement>
+      <visualElement>
+        <elementName>In</elementName>
+        <pos x="180" y="180"/>
+        <labels>
+          <label>rst</label>
+        </labels>
+      </visualElement>
+      <visualElement>
+        <elementName>In</elementName>
+        <pos x="180" y="220"/>
+        <labels>
+          <label>sel</label>
+        </labels>
+      </visualElement>
+      <visualElement>
+        <elementName>In</elementName>
+        <pos x="180" y="260"/>
+        <labels>
+          <label>we</label>
+        </labels>
+      </visualElement>
+      <visualElement>
+        <elementName>In</elementName>
+        <pos x="180" y="300"/>
+        <labels>
+          <label>re</label>
+        </labels>
+      </visualElement>
+      <visualElement>
+        <elementName>In</elementName>
+        <elementAttributes>
+          <entry>
+            <string>Bits</string>
+            <int>4</int>
+          </entry>
+        </elementAttributes>
+        <pos x="180" y="340"/>
+        <labels>
+          <label>ridx</label>
+        </labels>
+      </visualElement>
+      <visualElement>
+        <elementName>In</elementName>
+        <elementAttributes>
+          <entry>
+            <string>Bits</string>
+            <int>32</int>
+          </entry>
+        </elementAttributes>
+        <pos x="180" y="380"/>
+        <labels>
+          <label>wdata</label>
+        </labels>
+      </visualElement>
+      <visualElement>
+        <elementName>Out</elementName>
+        <elementAttributes>
+          <entry>
+            <string>Bits</string>
+            <int>32</int>
+          </entry>
+        </elementAttributes>
+        <pos x="460" y="220"/>
+        <labels>
+          <label>rdata</label>
+        </labels>
+      </visualElement>
+    </visualElements>
+    <wires/>
+  </circuit>
+</project>
