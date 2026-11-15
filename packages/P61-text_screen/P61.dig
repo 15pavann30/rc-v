@@ -321,11 +321,6 @@ C 0 1 1 1 0</dataString>
       <pos x="720" y="540"/>
     </visualElement>
     <visualElement>
-      <elementName>Const</elementName>
-      <elementAttributes/>
-      <pos x="460" y="420"/>
-    </visualElement>
-    <visualElement>
       <elementName>Add</elementName>
       <elementAttributes>
         <entry>
@@ -364,16 +359,6 @@ C 0 1 1 1 0</dataString>
         </entry>
       </elementAttributes>
       <pos x="1180" y="580"/>
-    </visualElement>
-    <visualElement>
-      <elementName>Register</elementName>
-      <elementAttributes>
-        <entry>
-          <string>Bits</string>
-          <int>6</int>
-        </entry>
-      </elementAttributes>
-      <pos x="540" y="380"/>
     </visualElement>
     <visualElement>
       <elementName>And</elementName>
@@ -437,6 +422,16 @@ C 0 1 1 1 0</dataString>
       </elementAttributes>
       <pos x="580" y="740"/>
     </visualElement>
+    <visualElement>
+      <elementName>D_FF</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Bits</string>
+          <int>6</int>
+        </entry>
+      </elementAttributes>
+      <pos x="540" y="380"/>
+    </visualElement>
   </visualElements>
   <wires>
     <wire>
@@ -450,10 +445,6 @@ C 0 1 1 1 0</dataString>
     <wire>
       <p1 x="1160" y="960"/>
       <p2 x="1280" y="960"/>
-    </wire>
-    <wire>
-      <p1 x="460" y="420"/>
-      <p2 x="540" y="420"/>
     </wire>
     <wire>
       <p1 x="920" y="420"/>
@@ -496,14 +487,6 @@ C 0 1 1 1 0</dataString>
       <p2 x="540" y="400"/>
     </wire>
     <wire>
-      <p1 x="600" y="400"/>
-      <p2 x="640" y="400"/>
-    </wire>
-    <wire>
-      <p1 x="640" y="400"/>
-      <p2 x="940" y="400"/>
-    </wire>
-    <wire>
       <p1 x="720" y="560"/>
       <p2 x="780" y="560"/>
     </wire>
@@ -536,7 +519,11 @@ C 0 1 1 1 0</dataString>
       <p2 x="540" y="380"/>
     </wire>
     <wire>
-      <p1 x="940" y="380"/>
+      <p1 x="600" y="380"/>
+      <p2 x="640" y="380"/>
+    </wire>
+    <wire>
+      <p1 x="640" y="380"/>
       <p2 x="980" y="380"/>
     </wire>
     <wire>
@@ -561,14 +548,14 @@ C 0 1 1 1 0</dataString>
     </wire>
     <wire>
       <p1 x="640" y="340"/>
-      <p2 x="640" y="400"/>
+      <p2 x="640" y="380"/>
     </wire>
     <wire>
       <p1 x="640" y="520"/>
       <p2 x="640" y="700"/>
     </wire>
     <wire>
-      <p1 x="640" y="400"/>
+      <p1 x="640" y="380"/>
       <p2 x="640" y="520"/>
     </wire>
     <wire>
@@ -598,10 +585,6 @@ C 0 1 1 1 0</dataString>
     <wire>
       <p1 x="1100" y="520"/>
       <p2 x="1100" y="1000"/>
-    </wire>
-    <wire>
-      <p1 x="940" y="380"/>
-      <p2 x="940" y="400"/>
     </wire>
     <wire>
       <p1 x="1200" y="620"/>
