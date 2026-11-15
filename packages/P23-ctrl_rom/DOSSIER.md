@@ -73,7 +73,9 @@ P22: no pull request has been submitted yet. I will add my review when it is.
 
 P24 (Control selector and checker) review comments:
 <https://github.com/campus-sutra/rc-v/pull/129/changes#r4578057636>
+
 <https://github.com/campus-sutra/rc-v/pull/129/changes#r4578049866>
+
 <https://github.com/campus-sutra/rc-v/pull/127/changes#r4578062473>
 
 ## E3 Where my block sits
