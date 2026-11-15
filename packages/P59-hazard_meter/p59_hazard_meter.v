@@ -74,10 +74,8 @@ module p59_hazard_meter (
     end
 
     // ---- register read: 0 = LOADUSE, 1 = RAW1, 15 = package number ----
-    assign rdata = (sel & re) ?
-                   ((ridx == 4'd0)  ? lu_cnt :
-                    (ridx == 4'd1)  ? raw_cnt :
-                    (ridx == 4'd15) ? 32'd59 : 32'd0)
-                   : 32'd0;
+    assign rdata = (ridx == 4'd0)  ? lu_cnt :
+                   (ridx == 4'd1)  ? raw_cnt :
+                   (ridx == 4'd15) ? 32'd59 : 32'd0;
 
 endmodule
