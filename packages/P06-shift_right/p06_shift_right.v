@@ -1,5 +1,7 @@
 // P06 Right barrel shifter
-// 32-bit combinational logical/arithmetic right barrel shifter.
+// Keep the module name and the port list exactly as they are.
+// You may change 'output wire' to 'output reg' if you assign an output in an always block.
+// Delete the placeholder assigns and write your design.
 module p06_shift_right (
     input  wire [31:0] a,
     input  wire [4:0] sh,
@@ -7,17 +9,6 @@ module p06_shift_right (
     output wire [31:0] y
 );
 
-    wire fill;
-    wire [31:0] s1, s2, s4, s8;
-
-    // Arithmetic mode replicates the sign bit; logical mode shifts in zero.
-    assign fill = arith & a[31];
-
-    // Five 2-to-1 mux stages implement shifts of 1, 2, 4, 8 and 16.
-    assign s1 = sh[0] ? {{1{fill}},  a[31:1]}  : a;
-    assign s2 = sh[1] ? {{2{fill}},  s1[31:2]} : s1;
-    assign s4 = sh[2] ? {{4{fill}},  s2[31:4]} : s2;
-    assign s8 = sh[3] ? {{8{fill}},  s4[31:8]} : s4;
-    assign y  = sh[4] ? {{16{fill}}, s8[31:16]}: s8;
+    assign y = arith ? ($signed(a) >>> sh) : (a >> sh);
 
 endmodule
