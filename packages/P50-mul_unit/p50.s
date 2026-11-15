@@ -1,6 +1,7 @@
-# P50 program - Multiply with the MUL unit
-# Rules: start at the label p50_main and finish with ret; every label you
-# create starts with p50_ ; save ra (and any s registers you use) on the stack.
+# P50 program: multiply two signed numbers with the MUL unit (I/O slot 8).
+# Registers of the unit (base 0x00020200, one word each):
+#   +0x00 MUL_A   +0x04 MUL_B   +0x08 MUL_CTRL (bit0 = start)
+#   +0x0C MUL_STATUS (bit0 = busy)   +0x10 MUL_RESULT
 
         .text
 p50_main:
@@ -9,49 +10,31 @@ p50_main:
         sw      s0, 8(sp)
         sw      s1, 4(sp)
 
-        # Read A (signed decimal)
-        call    rcv_read_dec
-        mv      s0, a0          # s0 = A
+        jal     ra, rcv_read_dec        # first number  -> a0
+        mv      s0, a0
+        jal     ra, rcv_read_dec        # second number -> a0
+        mv      s1, a0
 
-        # Read B (signed decimal)
-        call    rcv_read_dec
-        mv      s1, a0          # s1 = B
-
-        # Base address for multiplier slot 8: 0x00020200
-        lui     t0, 0x20
-        addi    t0, t0, 0x200   # t0 = 0x00020200 (MUL_A)
-
-        # Write A to MUL_A (offset 0)
-        sw      s0, 0(t0)
-
-        # Write B to MUL_B (offset 4)
-        sw      s1, 4(t0)
-
-        # Write 1 to MUL_CTRL (offset 8) to start multiplication
+        lui     t0, 0x20                # t0 = 0x00020000
+        addi    t0, t0, 0x200           # t0 = 0x00020200 (MUL base)
+        sw      s0, 0(t0)               # MUL_A
+        sw      s1, 4(t0)               # MUL_B
         li      t1, 1
-        sw      t1, 8(t0)
+        sw      t1, 8(t0)               # MUL_CTRL = 1 (start)
 
-p50_wait_busy:
-        # Read MUL_STATUS (offset 12)
-        lw      t2, 12(t0)
-        andi    t2, t2, 1
-        bnez    t2, p50_wait_busy
+p50_wait:
+        lw      t1, 12(t0)              # MUL_STATUS
+        andi    t1, t1, 1               # busy bit
+        bnez    t1, p50_wait            # poll while busy
 
-        # Read MUL_RESULT (offset 16)
-        lw      s0, 16(t0)      # s0 = product
+        lw      s0, 16(t0)              # MUL_RESULT
 
-        # Print "product = "
         la      a0, p50_msg
-        call    rcv_puts
-
-        # Print product as signed decimal
+        jal     ra, rcv_puts            # "product = "
         mv      a0, s0
-        call    rcv_print_dec
+        jal     ra, rcv_print_dec       # signed decimal
+        jal     ra, rcv_newline
 
-        # Print newline
-        call    rcv_newline
-
-        # Restore registers and return
         lw      s1, 4(sp)
         lw      s0, 8(sp)
         lw      ra, 12(sp)
