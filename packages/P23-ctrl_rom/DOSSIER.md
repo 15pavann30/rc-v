@@ -69,8 +69,12 @@ Example instruction: srli a0, a1, 2 (shift register a1 right by 2 bits, logical,
 The memory blocks are not used (memread = 0, memwrite = 0).
 
 ## E2 Neighbour review
-P22 (Hardwired control unit) review: <paste link to your review here>
-P24 (Control selector and checker) review: <paste link to your review here>
+P22: no pull request has been submitted yet. I will add my review when it is.
+
+P24 (Control selector and checker) review comments:
+<https://github.com/campus-sutra/rc-v/pull/129/changes#r4578057636>
+<https://github.com/campus-sutra/rc-v/pull/129/changes#r4578049866>
+<https://github.com/campus-sutra/rc-v/pull/127/changes#r4578062473>
 
 ## E3 Where my block sits
 My block is in the control layer. It is fed by the instruction field splitter (P17), which supplies the opcode bits op_hi = opcode[6:2]. Its output, the 16-bit control word, goes to P24, which chooses between it and the hardwired control word of P22 and raises a mismatch flag if they differ. The selected control word then controls blocks such as the write-back selector (P25), the operand selector (P26), the immediate selector (P20), the next-PC logic (P15, P16) and the memory blocks.
