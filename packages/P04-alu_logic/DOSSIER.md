@@ -89,7 +89,7 @@ Review the pull requests of P03 (PC incrementer) and P05 (Left barrel shifter). 
 comments here.
 
 - P05 (Left barrel shifter), PR #91: https://github.com/campus-sutra/rc-v/pull/91#issuecomment-6875499496
-- P03 (PC incrementer): (not yet reviewed: no P03 pull request submitted yet)
+- P03 (PC incrementer): https://github.com/campus-sutra/rc-v/pull/135/changes#r4579424579
 
 ## E3 Where my block sits
 In two or three sentences: which layer of the computer is your block in
