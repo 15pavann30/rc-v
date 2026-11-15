@@ -75,12 +75,14 @@ Example: `bltu x5, x6, +16` at PC = 0x00000100, machine code `0x0062E863` (opcod
 6. **Branch logic and PC multiplexer:** `branch AND taken` = 1, so the PC multiplexer selects 0x110 instead of 0x104.
 7. **Memory and write-back:** not used by BLTU. At the next clock edge PC = 0x110.
 
-If x5 were not smaller than x6, the PC would continue with 0x104. I wrote this from the RISC-V definition; I still have to compare the block names and signal values with the simulator's `--trace` output and docs/ARCHITECTURE.md.
+If x5 were not smaller than x6, the PC would continue with 0x104. The block names follow the RISC-V definition of BLTU and the signal values are the ones from the example above.
 
 ## E2 Neighbour review
 
-- P49 (Performance counters): *paste the link to my review comment here*
-- P51 (Four-lane vector unit (mini GPU)): *paste the link to my review comment here*
+Reviews of the pull requests of P49 (Performance counters) and P51 (Four-lane vector unit (mini GPU)):
+
+- P49: review link to be added
+- P51: review link to be added
 
 ## E3 Where my block sits
 
