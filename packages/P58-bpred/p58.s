@@ -1,4 +1,10 @@
-# P58 program - 2-bit branch predictor demo (placeholder until README task is known)
+# P58 program - branch prediction of a loop (I/O slot 16, base 0x00020400)
+# Reads N, runs the same counting loop twice, prints the 2nd run's counters.
+
+        .equ    p58_BASE,     0x00020400
+        .equ    p58_BRANCHES, 0          # ASSUMED: register 0 -> offset 0
+        .equ    p58_CORRECT,  4          # ASSUMED: register 1 -> offset 4
+        .equ    p58_CLEAR,    8          # ASSUMED: register 2 -> offset 8
 
         .text
 p58_main:
@@ -7,51 +13,48 @@ p58_main:
         sw      s0, 24(sp)
         sw      s1, 20(sp)
         sw      s2, 16(sp)
+        sw      s3, 12(sp)
+        sw      s4, 8(sp)
 
-        li      s0, 1               # counter state 0..3, start weakly not-taken
-        li      s1, 0               # number of correct predictions
-        la      s2, p58_seq         # pointer into outcome list
+        call    rcv_read_dec            # a0 = N
+        mv      s0, a0                  # s0 = N
+        li      s1, 2                   # two runs of the same loop code
+        li      s2, p58_BASE
 
+p58_run:
+        sw      zero, p58_CLEAR(s2)     # clear the counters
+        mv      t0, s0
 p58_loop:
-        lbu     t0, 0(s2)           # actual outcome (1 taken, 0 not taken)
-        li      t1, 255
-        beq     t0, t1, p58_done    # 255 marks the end of the list
+        addi    t0, t0, -1
+        bnez    t0, p58_loop            # the only branch inside the run
+        lw      s3, p58_BRANCHES(s2)    # read before any other branch executes
+        lw      s4, p58_CORRECT(s2)
+        addi    s1, s1, -1
+        bnez    s1, p58_run             # outer-loop branch, after the reads
 
-        sltiu   t2, s0, 2           # 1 if state < 2
-        xori    t2, t2, 1           # t2 = prediction (1 if state >= 2)
-        bne     t2, t0, p58_upd     # wrong prediction: don't count
-        addi    s1, s1, 1
-
-p58_upd:
-        beqz    t0, p58_dec
-        li      t3, 3
-        beq     s0, t3, p58_next    # saturate at 3
-        addi    s0, s0, 1
-        j       p58_next
-p58_dec:
-        beqz    s0, p58_next        # saturate at 0
-        addi    s0, s0, -1
-p58_next:
-        addi    s2, s2, 1
-        j       p58_loop
-
-p58_done:
-        addi    t0, s1, '0'         # print the correct count as one digit
-        sb      t0, 0(sp)
-        li      t1, 10
-        sb      t1, 1(sp)
-        sb      zero, 2(sp)
-        mv      a0, sp
+        la      a0, p58_s_br
         call    rcv_puts
+        mv      a0, s3
+        call    rcv_print_dec
+        call    rcv_newline
+        la      a0, p58_s_ok
+        call    rcv_puts
+        mv      a0, s4
+        call    rcv_print_dec
+        call    rcv_newline
 
         lw      ra, 28(sp)
         lw      s0, 24(sp)
         lw      s1, 20(sp)
         lw      s2, 16(sp)
+        lw      s3, 12(sp)
+        lw      s4, 8(sp)
         addi    sp, sp, 32
         ret
 
         .rodata
-p58_seq:
-        .byte   1, 1, 0, 1, 1, 0, 1, 1, 255
+p58_s_br:
+        .asciz  "branches: "
+p58_s_ok:
+        .asciz  "correct: "
         .align  2
