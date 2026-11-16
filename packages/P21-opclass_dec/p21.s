@@ -1,15 +1,16 @@
 # P21 program - palindrome checker
+# Reads a word, prints "<word> is a palindrome" or "<word> is not a palindrome".
 # Rules: start at the label p21_main and finish with ret; every label you
 # create starts with p21_ ; save ra (and any s registers you use) on the stack.
 # You may call the library routines in sw/lib/rcv_lib.s (rcv_puts, rcv_getc, ...).
 
-
         .text
 p21_main:
-        addi    sp, sp, -12
-        sw      ra, 8(sp)
-        sw      s0, 4(sp)
-        sw      s1, 0(sp)
+        addi    sp, sp, -16
+        sw      ra, 12(sp)
+        sw      s0, 8(sp)
+        sw      s1, 4(sp)
+        sw      s2, 0(sp)
         addi    sp, sp, -128         # line buffer on the stack
         mv      s0, sp               # s0 = buffer start
         li      s1, 0                # s1 = length
@@ -30,8 +31,9 @@ p21_read:                            # read chars until newline / EOF
         j       p21_read
 
 p21_check:
-        mv      t0, s0               # t0 = first char
         add     t1, s0, s1
+        sb      zero, 0(t1)          # terminate the word with 0
+        mv      t0, s0               # t0 = first char
         addi    t1, t1, -1           # t1 = last char
 p21_cmp:
         bgeu    t0, t1, p21_yes      # met/crossed -> palindrome
@@ -43,24 +45,27 @@ p21_cmp:
         j       p21_cmp
 
 p21_yes:
-        la      a0, p21_msg_yes
+        la      s2, p21_msg_yes
         j       p21_print
 p21_no:
-        la      a0, p21_msg_no
+        la      s2, p21_msg_no
 p21_print:
+        mv      a0, s0               # print the word
+        jal     ra, rcv_puts
+        mv      a0, s2               # print " is (not) a palindrome"
         jal     ra, rcv_puts
 
         addi    sp, sp, 128
-        lw      s1, 0(sp)
-        lw      s0, 4(sp)
-        lw      ra, 8(sp)
-        addi    sp, sp, 12
+        lw      s2, 0(sp)
+        lw      s1, 4(sp)                                                                                
+        lw      s0, 8(sp)
+        lw      ra, 12(sp)
+        addi    sp, sp, 16
         ret
 
         .rodata
 p21_msg_yes:
-        .asciz  "YES\n"
+        .asciz  " is a palindrome\n"
 p21_msg_no:
-        .asciz  "NO\n"
+        .asciz  " is not a palindrome\n"
         .align  2
-
