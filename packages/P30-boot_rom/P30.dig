@@ -42,7 +42,7 @@ Allowed parts: gates + multiplexer/decoder parts + ROM
 Do not rename, move or delete the input and output pins.</string>
         </entry>
       </elementAttributes>
-      <pos x="100" y="40"/>
+      <pos x="0" y="-140"/>
     </visualElement>
     <visualElement>
       <elementName>Testcase</elementName>
@@ -74,7 +74,7 @@ Do not rename, move or delete the input and output pins.</string>
           </testData>
         </entry>
       </elementAttributes>
-      <pos x="100" y="200"/>
+      <pos x="540" y="360"/>
     </visualElement>
     <visualElement>
       <elementName>ROM</elementName>
