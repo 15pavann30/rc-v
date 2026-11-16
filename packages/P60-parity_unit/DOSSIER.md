@@ -1,63 +1,98 @@
-# P60 Parity generator - dossier
+# P55 Stack guard - dossier
 
 ## U1 Digital logic
-- XOR truth table: 00 -> 0, 01 -> 1, 10 -> 1, 11 -> 0. A xor B = A'B + AB'.
-- XOR of many bits is 1 when the number of 1s is odd, so it gives parity.
-- 15 XOR gates: 3 per byte (4-, 2-, 1-bit) plus 3 for the word parity. No flip-flops.
+The guard needs a "less than" test, so I looked at one bit of the comparator.
+
+| A | B | A < B |
+|---|---|-------|
+| 0 | 0 | 0 |
+| 0 | 1 | 1 |
+| 1 | 0 | 0 |
+| 1 | 1 | 0 |
+
+From the K-map: A < B = A'·B. For 8 bits, compare from the top bit down:
+lt = lt7 + eq7·(lt6 + eq6·(...)), where eq = XNOR of the two bits.
+The flag is `sp < limit`. The minimum is updated when `sp < minsp`. Storing
+the result needs flip-flops (a register with an enable), because the guard has
+to remember the lowest sp seen earlier.
 
 ## U2 Digital components
-- Splitters cut data into bytes; a merger packs the 5 parity bits.
-- XOR gates compute parity. Three 3-bit Add blocks count the odd bytes.
-- Const 0 widens each parity bit to 3 bits and feeds the carry-in.
-- Verilog adds a 32-bit DATA register and a read multiplexer on `ridx`.
+- Registers: `minsp` (8-bit) and the flag, both on `clk`, cleared by `rst` or `clear`.
+- Comparator 1: `sp` against `limit`, gives `flag`.
+- Comparator 2: `sp` against `minsp`; its output chooses between the new `sp`
+  and the old `minsp` (a multiplexer).
+- `sp_we` is the enable, so the registers only change when x2 is written.
+- On reset or `clear`, `minsp` goes back to its maximum value (all ones),
+  so the first sp written always becomes the new minimum.
 
 ## U3 Data representation
-- 13 = 0x0000000D: byte 0 has three 1s. parity = 17 (0b10001), odd = 1.
-- 4294967295 = 0xFFFFFFFF (-1 signed): every byte even. parity = 0, odd = 0.
-- 2879705167 = 0xABA4D04F: all four bytes odd. parity = 15 (0b01111), odd = 4.
-- `odd` can reach 4 (100), so it needs 3 bits. Parity bits are zero-extended, not sign-extended.
-- The program uses lbu, because I guess lb would sign-extend codes above 127.
+Three 8-bit test vectors, with limit = 0x40:
+
+| sp (hex) | sp (binary) | sp (decimal) | Result |
+|---|---|---|---|
+| 0x50 | 0101 0000 | 80 | above limit, flag 0 |
+| 0x30 | 0011 0000 | 48 | below limit (0x40 = 64), flag 1, minsp = 0x30 |
+| 0x80 | 1000 0000 | 128 unsigned / -128 signed | above limit, flag 0 |
+
+Problem case: 0x80 looks negative as a signed number. If I used a signed
+comparator, -128 < 64 would wrongly raise the flag. Stack addresses are
+unsigned, so the comparator must be unsigned. In the program, "remembered sp -
+MINSP" is an unsigned subtraction with no overflow, because MINSP is never
+above the starting sp.
 
 ## U4 Computer organisation
-- Memory step: an I/O access through the address decoder (P31) and I/O bus (P33).
-- Used by sw (write DATA at 0x00020480) and lw (read PARITY at 0x00020484).
+The block works at the write-back step (the Verilog watches `commit`, `rf_we`,
+`rd == 2` and `rf_wd`). It also takes part in the memory step when software
+does `lw` or `sw` to its registers. Instructions that matter: `addi sp, sp, -8`
+at every call and `addi sp, sp, 8` at every return (they change x2), and `lw`/`sw`
+to read LIMIT or MINSP and to write STATUS.
 
 ## U5 Processors
-- CISC (x86) has a parity flag and popcount; RV32I has neither, so it needs a shift/XOR loop or this device.
-- A stack machine pushes bits and XORs the top two repeatedly.
-- A GPU does the parity of many words in parallel.
+- CISC: PUSH, POP and CALL change the stack pointer by themselves, so the guard
+  would watch one special stack-pointer register and not a normal write to x2.
+- Stack machine: almost every instruction moves the stack pointer, so a limit
+  check would sit directly in the hardware and run all the time.
+- GPU: each thread has a small fixed private stack, so one guard per thread
+  would be costly. Overflow is usually prevented by limiting the call depth.
 
 ## U6 Memory and I/O
-- Memory-mapped I/O device, slot 18 at 0x00020480. The CPU uses ordinary loads and stores.
-- Write: store data -> P27 -> P34 -> P31 -> P33 -> my device.
-- Read: my device -> P32 -> P28 -> P25 -> register file.
-- Programmed I/O, no interrupts. Register 15 reads 60 (the package number).
+The guard is a memory-mapped I/O device in slot 13 (registers from 0x00020340).
+The address decoder makes `sel` high for that range. A `sw` sets `we` and puts
+the data on `wdata`; a `lw` sets `re` and the value comes out on `rdata`,
+which reaches the CPU through the I/O read bus. `irq` equals STATUS bit 0 and
+goes to the interrupt controller. Register 15 reads 55 to identify the device.
 
-## E1 Instruction trace: XORI
-Example: `xori x5, x6, 0x0F` = 0x00F34293, with x6 = 0x35 (hand-calculated).
-- P14 PC and P30 ROM give the instruction.
-- P17 fields: rd = 5, funct3 = 100, rs1 = 6, imm = 0x0F.
-- P21 / P22 / P23 / P24: OP-IMM, control word 0x5000 (regwrite, bsel_imm).
-- P18-P20: I-type immediate 0x0000000F. P13: x6 = 0x35.
-- P26 picks the immediate as operand B. P10: funct3 100 = XOR.
-- P08 ALU (with P01, P04-P07): 0x35 xor 0x0F = 0x3A.
-- P25 selects the ALU result and writes 0x3A to x5. P03 / P15 / P14 give PC + 4.
+## E1 Instruction trace: SB
+Instruction: `sb x6, 3(x5)` with x5 = 0x00000100 and x6 = 0x000000AB.
+Encoding: 0x006281A3.
+
+| Block | What happens | Main signals |
+|---|---|---|
+| PC register / PC incrementer | PC supplies the address, PC + 4 is the next PC | next PC = PC + 4 |
+| Instruction field splitter | splits the word into fields | opcode 0100011, funct3 000, rs1 = 5, rs2 = 6 |
+| Opcode class / control unit | recognises a store, so memory write on and no register write | mem_we = 1, rf_we = 0 |
+| Immediate generator (I/S) | joins imm[11:5] and imm[4:0] | imm = 3 |
+| Register-file read port | reads both registers | rs1 = 0x100, rs2 = 0xAB |
+| ALU operand selector + adder | adds base register and immediate | address = 0x103 |
+| Store aligner | byte lane chosen by address[1:0] = 3 | data = 0xAB in lane 3, byte enable 1000 |
+| Address decoder | address 0x103 is data memory, not I/O | memory selected |
+| Data memory | only byte 0x103 changes | write |
+| Write-back | nothing written (rf_we = 0) | - |
+
+(Replace the values with the ones from the simulator's `--trace` output if
+you run it.)
 
 ## E2 Neighbour review
-Review the pull requests of P59 (Pipeline hazard meter) and P61 (Text screen).
-- P59 review: no pull request has been submitted yet. I will add my review when it is.
-- P61 review:
-- https://github.com/campus-sutra/rc-v/pull/147/changes/e241640c66a9968904c6ffe35b988a39b9578245#r4579138923
-- https://github.com/campus-sutra/rc-v/pull/147/changes/e241640c66a9968904c6ffe35b988a39b9578245#r4579129840
-- https://github.com/campus-sutra/rc-v/pull/146/changes/2cb580e657ee559c0a722952416c16e5316e29d2#r4579106575
+- P54 : no pull request has been submitted yet. I will add my review when it is.
+- P56 : no pull request has been submitted yet. I will add my review when it is.
 
 ## E3 Where my block sits
-- It is in the I/O layer: a peripheral on the I/O bus, built from XOR gates, adders, a register and a multiplexer.
-- I fed by the CPU's store data via P27, P34, P31, P33. Its output returns via P32, P28, P25 to the register file.
+My block is in the I/O layer, as a memory-mapped device that watches the datapath.
+It is fed by the register-file write port (`commit`, `rf_we`, `rd`, `rf_wd`) and
+by the address decoder and store path (`sel`, `we`, `wdata`). Its output goes
+to the I/O read bus (`rdata`) and to the interrupt controller (`irq`).
 
 ## E4 Syllabus map
-Tick every syllabus topic your work touched (main units: Unit 2, Unit 3).
-
 - [x] Logic gates, Boolean algebra, K-maps
 - [x] Combinational circuits (adders, decoders, encoders, multiplexers)
 - [x] Flip-flops, registers, counters
@@ -65,9 +100,9 @@ Tick every syllabus topic your work touched (main units: Unit 2, Unit 3).
 - [x] Number systems, complements, signed arithmetic
 - [x] Bus organisation, instruction codes and formats
 - [ ] Instruction cycle, hardwired vs microprogrammed control
-- [ ] Interrupts and the interrupt cycle
+- [x] Interrupts and the interrupt cycle
 - [ ] Pipelining
-- [ ] Register organisation, stack, addressing modes
+- [x] Register organisation, stack, addressing modes
 - [x] RISC vs CISC, multicore, GPU
 - [ ] Memory hierarchy, cache
 - [x] I/O interface, programmed / interrupt-driven I/O, DMA
