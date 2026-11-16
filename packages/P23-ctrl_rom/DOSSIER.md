@@ -69,7 +69,15 @@ Example instruction: srli a0, a1, 2 (shift register a1 right by 2 bits, logical,
 The memory blocks are not used (memread = 0, memwrite = 0).
 
 ## E2 Neighbour review
-P22: no pull request has been submitted yet. I will add my review when it is.
+P22: https://github.com/campus-sutra/rc-v/pull/177/changes#r4589741795
+
+https://github.com/campus-sutra/rc-v/pull/177/changes#r4589749140
+
+https://github.com/campus-sutra/rc-v/pull/177/changes#r4589754253
+
+https://github.com/campus-sutra/rc-v/pull/177/changes#r4589759654
+
+https://github.com/campus-sutra/rc-v/pull/177/changes#r4589788086
 
 P24 (Control selector and checker) review comments:
 <https://github.com/campus-sutra/rc-v/pull/129/changes#r4578057636>
